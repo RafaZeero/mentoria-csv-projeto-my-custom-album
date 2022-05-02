@@ -3,6 +3,8 @@ import Movies from './pages/Movies'
 import Home from './pages/Home'
 import Games from './pages/Games'
 import Books from './pages/Books'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
 import './App.css'
 import Navbar from './components/Navbar'
 
@@ -17,6 +19,8 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/games" element={<Games />} />
           <Route path="/books" element={<Books />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </div>
