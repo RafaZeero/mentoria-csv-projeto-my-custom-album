@@ -2,6 +2,8 @@ import './games.css'
 
 import { useState } from 'react'
 
+const games_list_url = 'https://api.rawg.io/api/games?key='
+
 export default function Games() {
   const [searchTerm, setSearchTerm] = useState('')
   const [gameResults, setGameResults] = useState([])
@@ -17,7 +19,9 @@ export default function Games() {
 
     setGameResults([])
 
-    fetch(games_list_url + api_key + `&search=${slug}`)
+    fetch(
+      games_list_url + import.meta.env.VITE_GAMES_API_KEY + `&search=${slug}`
+    )
       .then(response => response.json())
       .then(data => setGameResults(data.results))
       .catch(err => console.log(err))

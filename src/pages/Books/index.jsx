@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+const books_api_url = 'https://www.googleapis.com/books/v1/volumes?key='
+
 export default function Books() {
   const [searchParams, setSearchParams] = useState('')
   const [data, setData] = useState([])
@@ -15,7 +17,7 @@ export default function Books() {
 
     setData([])
 
-    fetch(books_api_url + `?q=${slug}` + api_key)
+    fetch(books_api_url + import.meta.env.VITE_BOOKS_API_KEY + `&q=${slug}`)
       .then(response => response.json())
       .then(data => setData(data.items))
       // .then(data => console.log(data))
@@ -29,7 +31,7 @@ export default function Books() {
       <h1>Books</h1>
       <form onSubmit={onSubmit}>
         <input type="text" value={searchParams} onChange={handleSearch} />
-        <button type="submit">Pesquisar</button>
+        <button type="submit">Pesquisar livro</button>
       </form>
 
       {data &&
