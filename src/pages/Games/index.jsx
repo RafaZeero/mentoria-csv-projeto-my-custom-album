@@ -39,11 +39,11 @@ export default function Games() {
 
       {gameResults &&
         gameResults.map(game => (
-          <ul key={game.id}>
-            <li>{game.name}</li>
+          <div key={game.id}>
             {game.background_image !== undefined && (
               <img src={game.background_image} alt="Game poster" />
             )}
+            <h2>{game.name}</h2>
 
             <li>
               Gênero:{' '}
@@ -52,7 +52,7 @@ export default function Games() {
               ))}
             </li>
             <li>Data de Lançamento:{game.released}</li>
-          </ul>
+          </div>
         ))}
     </div>
   )

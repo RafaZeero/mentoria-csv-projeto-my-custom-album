@@ -1,0 +1,125 @@
+.form_search {
+  margin: 30px;
+}
+.form_search h1 {
+  margin: 10px;
+}
+.search_area input {
+  height: 44px;
+  padding: 0 10px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+.form_search button {
+  background-color: initial;
+  background-image: linear-gradient(-180deg, #00d775, #00bd68);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter, -apple-system, system-ui, Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  height: 44px;
+  line-height: 44px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  /* position: relative; */
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  /* width: 100%; */
+  z-index: 9;
+  border: 0;
+}
+
+.form_search button:hover {
+  background: #00bd68;
+}
+
+.search_word {
+  color: #777;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.book_list {
+  display: grid;
+  gap: 26px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 0;
+  padding: 15px;
+}
+
+.card {
+  display: flex;
+  padding: 15px;
+  background-color: #fff;
+  /* border: 3px solid #000; */
+  border-radius: 10px;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 2.4px 3.2px; */
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
+.card_img {
+  width: 150px;
+  min-width: 50px;
+}
+@media (max-width: 767px) {
+  .card_img {
+    display: none;
+  }
+}
+
+.card_info {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn {
+  display: flex;
+  /* position: absolute; */
+  /* top: 224px; */
+
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(
+    0deg,
+    rgba(20, 167, 62, 1) 0%,
+    rgba(102, 247, 113, 1) 100%
+  );
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+}
+
+.btn:active {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}

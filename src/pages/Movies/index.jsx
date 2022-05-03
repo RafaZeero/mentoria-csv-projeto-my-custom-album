@@ -58,7 +58,6 @@ export default function Movies() {
         data.map(movie => (
           <ul key={movie.id}>
             <li>Título: {movie.original_title}</li>
-            {/* <li>{`${url}${movie.poster_path}`}</li> */}
             <img
               src={`${images_config_url}${movie.poster_path}`}
               alt="Poster"
