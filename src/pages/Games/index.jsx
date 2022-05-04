@@ -66,7 +66,7 @@ export default function Games() {
                 imageApi={game.background_image}
                 altImage={'Game poster'}
                 resultTitle={game.name}
-                firstTopicTitle={'Gênero: '}
+                firstTopicTitle={'Gênero'}
                 firstTopicContent={game.genres}
                 firstTopicContentNotFound={'Gênero não encontrado'}
                 secondTopicTitle={'Plataformas: '}
@@ -77,9 +77,9 @@ export default function Games() {
                 thirdTopicContentNotFound={'Lançamento não encontrado'}
               />
               {/* {console.log(game.platforms[0].platform.name)} */}
-              {console.log(game.name)}
+              {/* {console.log(game.name)}
               {console.log(game.platforms)}
-              {console.log(game.platforms[0].platform.name)}
+              {console.log(game.platforms[0].platform.name)} */}
               {/* <div className="card">
                 <img
                   src={

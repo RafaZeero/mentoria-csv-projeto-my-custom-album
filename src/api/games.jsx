@@ -14,13 +14,8 @@ export default function APIResults({
   thirdTopicContent,
   thirdTopicContentNotFound
 }) {
-  const getValues = object => {
-    const result = 'a'
-    return result
-  }
-  const platformsValues = secondTopicContent.map(result => result)
-  const platformsMap = Object.values(platformsValues).map(r => Object.values(r))
-  console.log(platformsMap)
+  const platformskeys = secondTopicContent.map(plat => plat.platform.name)
+  console.log(platformskeys)
   return (
     <>
       <div className="card">
@@ -36,7 +31,7 @@ export default function APIResults({
           {/* Conteúdo iterável */}
           <span>
             {firstTopicTitle}:{' '}
-            {firstTopicContent
+            {firstTopicContent.length > 0
               ? firstTopicContent.map(topic => (
                   <span key={topic.id ? topic.id : topic}>
                     {topic.name ? topic.name : topic} -{' '}
@@ -46,9 +41,8 @@ export default function APIResults({
           </span>
           {/* Conteúdo não iterável */}
           <p>
-            {secondTopicContent
-              ? secondTopicTitle +
-                <span key={platformsMap[0].id}>{platformsMap[0].name} - </span>
+            {secondTopicContent !== undefined
+              ? secondTopicTitle + secondTopicContent[0].platform.name
               : secondTopicContentNotFound}
           </p>
           {/* Data de lançamento */}
