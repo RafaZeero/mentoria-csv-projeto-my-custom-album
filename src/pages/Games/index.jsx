@@ -5,6 +5,7 @@ import Search from '../../components/Search'
 
 //style
 import './games.css'
+import GamesAPI from '../../api/games'
 
 const games_list_url = 'https://api.rawg.io/api/games?key='
 
@@ -36,6 +37,7 @@ export default function Games() {
     )
       .then(response => response.json())
       .then(data => setData(data.results))
+      // .then(data => console.log(data.results))
       .catch(err => console.log(err))
 
     setSearchWord(searchParams)
@@ -45,34 +47,61 @@ export default function Games() {
   return (
     <div>
       <Search
-        sectionName={'Games'}
+        sectionName={'Jogos'}
         onSubmitFunction={onSubmit}
         nameValue={'games'}
         searchParams={searchParams}
         searchFunction={handleSearch}
-        placeholderValue={'games'}
+        placeholderValue={'Jogo'}
         buttonContent={'Pesquisar jogo'}
         searchWord={searchWord}
         error={error}
       />
 
-      {data &&
-        data.map(game => (
-          <div key={game.id}>
-            {game.background_image !== undefined && (
-              <img src={game.background_image} alt="Game poster" />
-            )}
-            <h2>{game.name}</h2>
-
-            <li>
-              Gênero:{' '}
-              {game.genres.map(genre => (
-                <p key={genre.id}>{genre.name}</p>
-              ))}
-            </li>
-            <li>Data de Lançamento:{game.released}</li>
-          </div>
-        ))}
+      <section className="content_list">
+        {data &&
+          data.map(game => (
+            <div key={game.id}>
+              <GamesAPI
+                imageApi={game.background_image}
+                altImage={'Game poster'}
+                resultTitle={game.name}
+                firstTopicTitle={'Gênero: '}
+                firstTopicContent={game.genres}
+                firstTopicContentNotFound={'Gênero não encontrado'}
+                secondTopicTitle={'Plataformas: '}
+                secondTopicContent={game.platforms}
+                secondTopicContentNotFound={'Plataforma não encontrado'}
+                thirdTopicTitle={'Data de Lançamento: '}
+                thirdTopicContent={game.released}
+                thirdTopicContentNotFound={'Lançamento não encontrado'}
+              />
+              {/* {console.log(game.platforms[0].platform.name)} */}
+              {console.log(game.name)}
+              {console.log(game.platforms)}
+              {console.log(game.platforms[0].platform.name)}
+              {/* <div className="card">
+                <img
+                  src={
+                    game.background_image
+                      ? background_image
+                      : '../../../public/images/no-image.jpg'
+                  }
+                  alt="Game poster"
+                  className="card_img"
+                />
+                <h2>{game.name}</h2>
+                <li>
+                  Gênero:{' '}
+                  {game.genres.map(genre => (
+                    <p key={genre.id}>{genre.name}</p>
+                  ))}
+                </li>
+                <li>Data de Lançamento:{game.released}</li>
+              </div> */}
+            </div>
+          ))}
+      </section>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 //components
 import Search from '../../components/Search'
+import BooksAPI from '../../api/books'
 
 //styles
 import './books.css'
@@ -44,22 +45,36 @@ export default function Books() {
   return (
     <div>
       <Search
-        sectionName={'Books'}
+        sectionName={'Livros'}
         onSubmitFunction={onSubmit}
-        nameValue={'books'}
+        nameValue={'livros'}
         searchParams={searchParams}
         searchFunction={handleSearch}
-        placeholderValue={'books'}
+        placeholderValue={'Livro'}
         buttonContent={'Pesquisar livro'}
         searchWord={searchWord}
         error={error}
       />
 
-      <section className="book_list">
+      <section className="content_list">
         {data &&
           data.map(book => (
             <div key={book.id}>
-              <div className="card">
+              <BooksAPI
+                imageApi={book.volumeInfo.imageLinks?.thumbnail}
+                altImage={'Book cover'}
+                resultTitle={book.volumeInfo.title}
+                firstTopicTitle={'Autor'}
+                firstTopicContent={book.volumeInfo.authors}
+                firstTopicContentNotFound={'Autor não encontrado'}
+                secondTopicTitle={'Gênero: '}
+                secondTopicContent={book.volumeInfo.categories}
+                secondTopicContentNotFound={'Gênero não encontrado'}
+                thirdTopicTitle={'Lançado em '}
+                thirdTopicContent={book.volumeInfo.publishedDate}
+                thirdTopicContentNotFound={'Lançamento não encontrado'}
+              />
+              {/* <div className="card">
                 <img
                   src={
                     book.volumeInfo.imageLinks?.thumbnail
@@ -95,7 +110,7 @@ export default function Books() {
                   </p>
                   <button className="btn">Adicionar aos lidos</button>
                 </div>
-              </div>
+              </div> */}
             </div>
           ))}
       </section>
