@@ -1,26 +1,56 @@
-// const fetchMovies = movie => {
-//   fetch(search_url + movie)
-//     .then(res => res.json())
-//     .then(data => setData(data.results))
-//     .then(data => console.log(data.results))
-//     .catch(err => console.log(err))
-// }
+//make books api
+import noImage from '/images/no-image.jpg'
+import { useState } from 'react'
 
-// const fetchData = (url, param, setter) => {
-//   fetch(url + param)
-//     .then(res => res.json())
-//     .then(setter)
-//     .catch(err => console.log(err))
-// }
-
-// const fetchMoviesDetails = movie => {
-//   fetchData(
-//     search_url + process.env.REACT_APP_MOVIES_API_KEY + '&query=',
-//     movie,
-//     data => setData(data.results)
-//   )
-// }
-
-// const searching = () => {
-//   fetchMoviesDetails(searchParams)
-// }
+export default function MoviesAPI({
+  imageApi,
+  altImage,
+  resultTitle,
+  firstTopicTitle,
+  firstTopicContent,
+  firstTopicContentNotFound,
+  secondTopicTitle,
+  secondTopicContent,
+  secondTopicContentNotFound,
+  thirdTopicTitle,
+  thirdTopicContent,
+  thirdTopicContentNotFound
+}) {
+  return (
+    <>
+      <div className="card">
+        {/* Imagem do item */}
+        <img
+          src={imageApi ? imageApi : noImage}
+          alt={altImage}
+          className="card_img"
+        />
+        <div className="card_info">
+          {/* Título do item */}
+          <h2>{resultTitle}</h2>
+          {/* Conteúdo iterável */}
+          {/* <span>
+            {firstTopicTitle}:{' '}
+            {firstTopicContent ? firstTopicContent : firstTopicContentNotFound}
+          </span> */}
+          {/* Data de lançamento */}
+          <p>
+            {thirdTopicContent
+              ? thirdTopicTitle +
+                thirdTopicContent.split('-').reverse().join('/')
+              : thirdTopicContentNotFound}
+          </p>
+          {/* Conteúdo não iterável */}
+          <p>
+            {secondTopicContent
+              ? typeof secondTopicContent === Array
+                ? secondTopicContent.map(sinopse => <span>{sinopse}</span>)
+                : secondTopicTitle + secondTopicContent.slice(0, 300) + '...'
+              : secondTopicContentNotFound}
+          </p>
+          <button className="btn">Adicionar a lista</button>
+        </div>
+      </div>
+    </>
+  )
+}

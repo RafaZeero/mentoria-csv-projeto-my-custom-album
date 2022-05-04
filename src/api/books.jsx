@@ -1,5 +1,5 @@
 //make books api
-import noImage from '../../public/images/no-image.jpg'
+import noImage from '/images/no-image.jpg'
 
 export default function BooksAPI({
   imageApi,
@@ -41,7 +41,7 @@ export default function BooksAPI({
           {/* Conteúdo não iterável */}
           <p>
             {secondTopicContent
-              ? typeof secondTopicContent === 'array'
+              ? typeof secondTopicContent === Array
                 ? secondTopicContent.map(platform => <span>{platform}</span>)
                 : secondTopicTitle + secondTopicContent
               : secondTopicContentNotFound}

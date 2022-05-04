@@ -1,4 +1,4 @@
-import noImage from '../../public/images/no-image.jpg'
+import noImage from '/images/no-image.jpg'
 
 export default function APIResults({
   imageApi,
@@ -14,8 +14,8 @@ export default function APIResults({
   thirdTopicContent,
   thirdTopicContentNotFound
 }) {
-  const platformskeys = secondTopicContent.map(plat => plat.platform.name)
-  console.log(platformskeys)
+  const platformskeys = Object.entries(secondTopicContent)
+  // console.log(platformskeys)
   return (
     <>
       <div className="card">
@@ -41,8 +41,16 @@ export default function APIResults({
           </span>
           {/* Conteúdo não iterável */}
           <p>
-            {secondTopicContent !== undefined
+            {/* {secondTopicContent !== undefined
               ? secondTopicTitle + secondTopicContent[0].platform.name
+              : secondTopicContentNotFound} */}
+            {secondTopicContent !== undefined
+              ? secondTopicTitle +
+                Object.values(secondTopicContent).map(test =>
+                  Object.values(test).map(gameName => {
+                    return gameName.name + ' '
+                  })
+                )
               : secondTopicContentNotFound}
           </p>
           {/* Data de lançamento */}

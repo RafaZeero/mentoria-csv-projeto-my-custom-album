@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Search from '../../components/Search'
+import MoviesAPI from '../../api/movies'
 
 export default function Movies() {
   const [searchParams, setSearchParams] = useState('')
@@ -8,8 +9,6 @@ export default function Movies() {
   const [error, setError] = useState(null)
 
   const search_url = `https://api.themoviedb.org/3/search/movie?api_key=`
-
-  const images_url = `https://api.themoviedb.org/3/movie/` //${movie.id}?api_key=${api_key}&language=en-US`
   const images_config_url = 'http://image.tmdb.org/t/p/w500/'
 
   const handleSearch = e => {
@@ -56,19 +55,37 @@ export default function Movies() {
         searchWord={searchWord}
         error={error}
       />
-
-      {data &&
-        data.map(movie => (
-          <ul key={movie.id}>
-            <li>Título: {movie.original_title}</li>
-            <img
-              src={`${images_config_url}${movie.poster_path}`}
-              alt="Poster"
-            />
-            <li>Data de estreia: {movie.release_date}</li>
-            <p>{movie.overview}</p>
-          </ul>
-        ))}
+      <section className="content_list">
+        {data &&
+          data.map(movie => (
+            <div key={movie.id}>
+              <MoviesAPI
+                imageApi={`${images_config_url}${movie.poster_path}`}
+                altImage={'Filme poster'}
+                resultTitle={movie.original_title}
+                firstTopicTitle={'Gênero'}
+                firstTopicContent={movie.genre_ids}
+                firstTopicContentNotFound={'Gênero não encontrado'}
+                secondTopicTitle={'Sinopse: '}
+                secondTopicContent={movie.overview}
+                secondTopicContentNotFound={'Sinopse não encontrado'}
+                thirdTopicTitle={'Data de lançamento: '}
+                thirdTopicContent={movie.release_date}
+                thirdTopicContentNotFound={'Lançamento não encontrado'}
+              />
+              {/* {console.log(movie)} */}
+            </div>
+            // <ul key={movie.id}>
+            //   <li>Título: {movie.original_title}</li>
+            //   <img
+            //     src={`${images_config_url}${movie.poster_path}`}
+            //     alt="Poster"
+            //   />
+            //   <li>Data de estreia: {movie.release_date}</li>
+            //   <p>{movie.overview}</p>
+            // </ul>
+          ))}
+      </section>
     </div>
   )
 }
