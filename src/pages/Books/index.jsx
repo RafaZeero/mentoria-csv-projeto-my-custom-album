@@ -1,4 +1,8 @@
 import { useState } from 'react'
+
+//components
+import Search from '../../components/Search'
+
 //styles
 import './books.css'
 
@@ -39,25 +43,17 @@ export default function Books() {
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="form_search">
-        <h1>Books</h1>
-        <div className="search_area">
-          <input
-            type="text"
-            name="books"
-            value={searchParams}
-            onChange={handleSearch}
-            placeholder="books"
-          />
-          <button type="submit">Pesquisar</button>
-        </div>
-      </form>
-
-      {error && <p>{error}</p>}
-
-      {searchWord && (
-        <p className="search_word">Resultados para '{searchWord}'</p>
-      )}
+      <Search
+        sectionName={'Books'}
+        onSubmitFunction={onSubmit}
+        nameValue={'books'}
+        searchParams={searchParams}
+        searchFunction={handleSearch}
+        placeholderValue={'books'}
+        buttonContent={'Pesquisar livro'}
+        searchWord={searchWord}
+        error={error}
+      />
 
       <section className="book_list">
         {data &&

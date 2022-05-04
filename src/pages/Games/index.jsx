@@ -1,44 +1,63 @@
-import './games.css'
-
 import { useState } from 'react'
+
+//components
+import Search from '../../components/Search'
+
+//style
+import './games.css'
 
 const games_list_url = 'https://api.rawg.io/api/games?key='
 
 export default function Games() {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [gameResults, setGameResults] = useState([])
+  const [searchParams, setSearchParams] = useState('')
+  const [searchWord, setSearchWord] = useState('')
+  const [data, setData] = useState([])
+  const [error, setError] = useState(null)
 
   const handleSearch = e => {
-    setSearchTerm(e.target.value)
+    setSearchParams(e.target.value)
   }
 
   const onSubmit = e => {
     e.preventDefault()
+    setError(null)
 
-    const slug = searchTerm.split(' ').join('-').toLowerCase()
+    const slug = searchParams.split(' ').join('-').toLowerCase()
 
-    setGameResults([])
+    setData([])
+
+    if (!slug.length || slug.length < 3) {
+      setSearchWord('')
+      return setError('Busque com no mínimo 3 caracteres')
+    }
 
     fetch(
       games_list_url + import.meta.env.VITE_GAMES_API_KEY + `&search=${slug}`
     )
       .then(response => response.json())
-      .then(data => setGameResults(data.results))
+      .then(data => setData(data.results))
       .catch(err => console.log(err))
 
-    setSearchTerm('')
+    setSearchWord(searchParams)
+    setSearchParams('')
   }
 
   return (
     <div>
-      <h1>games</h1>
-      <form onSubmit={onSubmit}>
-        <input type="text" value={searchTerm} onChange={handleSearch} />
-        <button type="submit">Pesquisar</button>
-      </form>
+      <Search
+        sectionName={'Games'}
+        onSubmitFunction={onSubmit}
+        nameValue={'games'}
+        searchParams={searchParams}
+        searchFunction={handleSearch}
+        placeholderValue={'games'}
+        buttonContent={'Pesquisar jogo'}
+        searchWord={searchWord}
+        error={error}
+      />
 
-      {gameResults &&
-        gameResults.map(game => (
+      {data &&
+        data.map(game => (
           <div key={game.id}>
             {game.background_image !== undefined && (
               <img src={game.background_image} alt="Game poster" />
