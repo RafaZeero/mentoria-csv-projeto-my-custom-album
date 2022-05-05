@@ -27,4 +27,4 @@ dist-ssr
 #firebase
 .firebaserc
 storage.rules
-src/firebase/*
+
