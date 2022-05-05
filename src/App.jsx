@@ -8,7 +8,6 @@ import Games from './pages/Games'
 import Books from './pages/Books'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import Dashboard from './pages/Dashboard'
 
 //styles
 import './App.css'
@@ -26,10 +25,6 @@ function App() {
           <Navbar user={user} />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route
-              path="dashboard"
-              element={user ? <Dashboard /> : <Navigate replace to="/login" />}
-            />
             <Route path="movies" element={<Movies />} />
             <Route path="games" element={<Games />} />
             <Route path="books" element={<Books />} />
