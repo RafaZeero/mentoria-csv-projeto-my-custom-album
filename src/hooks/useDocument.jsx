@@ -1,6 +1,6 @@
 import { doc, collection, onSnapshot } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
-import { db } from '../firebase/config'
+import { db } from '../Firebase/config'
 
 export const useDocument = (col, id) => {
   const [document, setDocument] = useState(null)

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { auth, storage, db } from '../firebase/config'
+import { auth, storage, db } from '../Firebase/config'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { uploadBytes, ref, getDownloadURL } from 'firebase/storage'
 
