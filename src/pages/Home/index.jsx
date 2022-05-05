@@ -7,15 +7,21 @@ export default function Home() {
         <h1>Album Personalizado</h1>
         <div className="homepage_img animation_home">
           <Link to="games">
-            <img src="/assets/images/game-controller.svg" alt="Controller" />
+            <img
+              src="../../../public/assets/images/game-controller.svg"
+              alt="Controller"
+            />
           </Link>
 
           <Link to="movies">
-            <img src="/assets/images/movie-camera.svg" alt="Camera" />
+            <img
+              src="../../../public/assets/images/movie-camera.svg"
+              alt="Camera"
+            />
           </Link>
 
           <Link to="books">
-            <img src="/assets/images/books.svg" alt="Books" />
+            <img src="../../../public/assets/images/books.svg" alt="Books" />
           </Link>
         </div>
         <p>
