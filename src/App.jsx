@@ -23,7 +23,6 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          <h1>Album Personalizado</h1>
           <Navbar user={user} />
           <Routes>
             <Route path="/" element={<Home />} />

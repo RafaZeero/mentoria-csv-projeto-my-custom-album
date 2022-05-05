@@ -13,9 +13,7 @@ export default function Navbar({ user }) {
               <li>
                 <span className="displayName">Olá, {user.displayName}</span>
               </li>
-              <button className="logout_button" onClick={logout}>
-                Configurações da Conta
-              </button>
+              <button className="logout_button">Configurações da Conta</button>
               <li>
                 {isPending ? (
                   <button className="logout_button" disabled>
@@ -40,7 +38,7 @@ export default function Navbar({ user }) {
           )}
         </div>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Início</Link>
         </li>
         <li>
           <Link to="/games">Jogos</Link>

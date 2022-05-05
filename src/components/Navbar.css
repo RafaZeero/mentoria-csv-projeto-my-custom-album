@@ -26,6 +26,7 @@
   align-items: center;
   margin-right: auto;
   padding: 10px 25px;
+  gap: 10px;
 }
 
 .displayName {
