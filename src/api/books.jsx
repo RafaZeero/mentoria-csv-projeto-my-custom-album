@@ -1,5 +1,5 @@
 //make books api
-import noImage from '/images/no-image.jpg'
+import noImage from 'images/no-image.jpg'
 
 export default function BooksAPI({
   imageApi,
