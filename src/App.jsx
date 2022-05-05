@@ -1,28 +1,54 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useAuthContext } from './hooks/useAuthContext'
+
+//pages
 import Movies from './pages/Movies'
 import Home from './pages/Home'
 import Games from './pages/Games'
 import Books from './pages/Books'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Dashboard from './pages/Dashboard'
+
+//styles
 import './App.css'
+
+//components
 import Navbar from './components/Navbar'
 
 function App() {
+  const { user, authIsReady } = useAuthContext()
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <h1>Custom Album</h1>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </BrowserRouter>
+      {authIsReady && (
+        <BrowserRouter>
+          <h1>Album Personalizado</h1>
+          <Navbar user={user} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="dashboard"
+              element={user ? <Dashboard /> : <Navigate replace to="/login" />}
+            />
+            <Route path="movies" element={<Movies />} />
+            <Route path="games" element={<Games />} />
+            <Route path="books" element={<Books />} />
+            <Route
+              path="login"
+              element={user ? <Navigate replace to="/" /> : <Login />}
+            />
+            <Route
+              path="signup"
+              element={user ? <Navigate replace to="/" /> : <Signup />}
+            />
+            <Route
+              path="*"
+              element={user ? <Navigate replace to="/" /> : <Login />}
+            />
+          </Routes>
+        </BrowserRouter>
+      )}
     </div>
   )
 }

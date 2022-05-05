@@ -1,6 +1,6 @@
 import noImage from '/images/no-image.jpg'
 
-export default function APIResults({
+export default function GamesAPI({
   imageApi,
   altImage,
   resultTitle,

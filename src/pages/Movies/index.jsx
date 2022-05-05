@@ -50,7 +50,7 @@ export default function Movies() {
         nameValue={'filme'}
         searchParams={searchParams}
         searchFunction={handleSearch}
-        placeholderValue={'filmes'}
+        placeholderValue={'Filme'}
         buttonContent={'Pesquisar filme'}
         searchWord={searchWord}
         error={error}

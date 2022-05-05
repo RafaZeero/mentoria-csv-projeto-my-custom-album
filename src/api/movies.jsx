@@ -1,6 +1,5 @@
 //make books api
 import noImage from '/images/no-image.jpg'
-import { useState } from 'react'
 
 export default function MoviesAPI({
   imageApi,

@@ -1,5 +1,24 @@
 .App {
   text-align: center;
-  background-color: #fefefe;
+  background-color: #d2e8de;
   color: #000;
+  min-height: 100vh;
+}
+
+label {
+  display: block;
+  margin: 24px auto;
+}
+label span {
+  display: block;
+  margin-bottom: 6px;
+}
+input.logs {
+  padding: 8px 6px;
+  font-size: 1em;
+  color: #777;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }

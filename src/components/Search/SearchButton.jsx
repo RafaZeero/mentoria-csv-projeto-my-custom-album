@@ -1,9 +1,13 @@
 import './SearchButton.css'
 
 export function SearchButton({ buttonContent }) {
+  const addToMyAlbum = () => {}
+
   return (
     <>
-      <button className="search_button">{buttonContent}</button>
+      <button onClick={addToMyAlbum} className="search_button">
+        {buttonContent}
+      </button>
     </>
   )
 }

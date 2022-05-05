@@ -1,3 +1,5 @@
+import './SearchArea.css'
+
 export function SearchArea({
   nameValue,
   searchParams,
@@ -7,6 +9,7 @@ export function SearchArea({
   return (
     <>
       <input
+        className="search_input"
         type="text"
         name={nameValue}
         value={searchParams}
