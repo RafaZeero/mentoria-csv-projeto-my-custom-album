@@ -36,22 +36,21 @@ export const useLogin = () => {
       const user = result.user
       // This gives you a Google Access Token.
       const credential = GoogleAuthProvider.credentialFromResult(result)
+
       const token = credential.accessToken
-      console.log(result)
-      console.log(token)
 
       // create a user document
       const myDocRef = doc(db, 'users', user.uid)
       await setDoc(myDocRef, {
         online: true,
-        displayName,
+        displayName: user.displayName,
         photoURL: user.photoURL
       })
 
       // add display name to user
-      await updateProfile(res.user, {
-        displayName,
-        photoURL: res.user.photoURL
+      await updateProfile(user, {
+        displayName: user.displayName,
+        photoURL: user.photoURL
       })
 
       // // The signed-in user info.
@@ -87,11 +86,16 @@ export const useLogin = () => {
 
     try {
       const res = await signInWithPopup(auth, new GithubAuthProvider())
+      console.log('result: ', res)
+
       // The signed-in user info.
       const user = res.user
       // This gives you a Github Access Token.
       const credential = GithubAuthProvider.credentialFromResult(res)
+      console.log('credential: ', credential)
+
       const token = credential.accessToken
+      console.log('token: ', token)
 
       // update online status on document
       const myDocRef = doc(db, 'users', user.uid)
