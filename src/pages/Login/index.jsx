@@ -7,7 +7,8 @@ import './login.css'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { login, isPending, error } = useLogin()
+  const { login, isPending, error, loginWithGoogle, loginWithGithub } =
+    useLogin()
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -46,6 +47,14 @@ export default function Login() {
         <button className="btn">Login</button>
       )}
       {error && <div className="error">{error}</div>}
+
+      <hr />
+      <button className="login_buton" onClick={loginWithGoogle}>
+        Continuar com Google
+      </button>
+      <button className="login_buton" onClick={loginWithGithub}>
+        Continuar com GitHub
+      </button>
     </form>
   )
 }

@@ -29,6 +29,11 @@
   gap: 10px;
 }
 
+.user_photo {
+  width: 64px;
+  border-radius: 50%;
+}
+
 .displayName {
   margin-right: 20px;
 }

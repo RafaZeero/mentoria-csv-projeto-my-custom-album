@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { db, auth } from '../Firebase/config'
 import { useAuthContext } from './useAuthContext'
 import { doc, updateDoc } from 'firebase/firestore'
+import { signOut } from 'firebase/auth'
 
 export const useLogout = () => {
   const [isCancelled, setIsCancelled] = useState(false)
@@ -20,7 +21,8 @@ export const useLogout = () => {
       await updateDoc(myDocRef, {
         online: false
       })
-      await auth.signOut()
+      await signOut(auth)
+      // await auth.signOut()
 
       // dispatch logout action
       dispatch({ type: 'LOGOUT' })

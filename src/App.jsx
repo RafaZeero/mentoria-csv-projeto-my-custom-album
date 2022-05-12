@@ -28,6 +28,10 @@ function App() {
             <Route path="movies" element={<Movies />} />
             <Route path="games" element={<Games />} />
             <Route path="books" element={<Books />} />
+            {/* <Route
+              path="login"
+              element={user ? <Navigate replace to="/" /> : <Login />}
+            /> */}
             <Route
               path="login"
               element={user ? <Navigate replace to="/" /> : <Login />}

@@ -10,6 +10,7 @@ export default function Navbar({ user }) {
         <div className="user_display">
           {user ? (
             <>
+              <img className="user_photo" src={user.photoURL} alt="sem foto" />
               <li>
                 <span className="displayName">Olá, {user.displayName}</span>
               </li>
