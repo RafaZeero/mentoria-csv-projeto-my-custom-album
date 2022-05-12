@@ -70,3 +70,6 @@ ul {
   text-decoration: underline;
   text-underline-offset: 0.3rem;
 }
+.link__to__github {
+  text-decoration: none;
+}

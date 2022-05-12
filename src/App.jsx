@@ -8,6 +8,7 @@ import Games from './pages/Games'
 import Books from './pages/Books'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Dashboard from './pages/Dashboard'
 
 //styles
 import './App.css'
@@ -28,17 +29,18 @@ function App() {
             <Route path="movies" element={<Movies />} />
             <Route path="games" element={<Games />} />
             <Route path="books" element={<Books />} />
-            {/* <Route
-              path="login"
-              element={user ? <Navigate replace to="/" /> : <Login />}
-            /> */}
             <Route
               path="login"
               element={user ? <Navigate replace to="/" /> : <Login />}
             />
+
             <Route
               path="signup"
               element={user ? <Navigate replace to="/" /> : <Signup />}
+            />
+            <Route
+              path="dashboard"
+              element={user ? <Dashboard /> : <Navigate replace to="/" />}
             />
             <Route
               path="*"

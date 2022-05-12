@@ -19,7 +19,14 @@ export default function Home() {
           </Link>
         </div>
         <p>
-          Criado por <span className="author">Rafael Lima de Morais</span>
+          Criado por{' '}
+          <a
+            href="https://github.com/rafazeero"
+            target="_blank"
+            className="link__to__github"
+          >
+            <span className="author">Rafael Lima de Morais</span>
+          </a>
         </p>
       </div>
     </>

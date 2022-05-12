@@ -14,7 +14,11 @@ export default function Navbar({ user }) {
               <li>
                 <span className="displayName">Olá, {user.displayName}</span>
               </li>
-              <button className="logout_button">Configurações da Conta</button>
+              <Link to="/dashboard">
+                <button className="logout_button">
+                  Configurações da Conta
+                </button>
+              </Link>
               <li>
                 {isPending ? (
                   <button className="logout_button" disabled>

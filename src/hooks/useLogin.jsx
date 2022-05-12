@@ -28,7 +28,7 @@ export const useLogin = () => {
       providerGoogle.addScope('profile')
       providerGoogle.addScope('email')
       const result = await signInWithPopup(auth, providerGoogle)
-      console.log('result: ', result)
+      // console.log('result: ', result)
 
       // The signed-in user info.
       const userGoogle = result.user
@@ -36,7 +36,7 @@ export const useLogin = () => {
       const credentialGoogle = GoogleAuthProvider.credentialFromResult(result)
 
       const tokenGoogle = credentialGoogle.accessToken
-      console.log('credential: ', credentialGoogle)
+      // console.log('credential: ', credentialGoogle)
 
       // create a user document
       const myDocRef = doc(db, 'users', userGoogle.uid)
@@ -106,6 +106,7 @@ export const useLogin = () => {
         navigate('/')
       }
     } catch (err) {
+      console.log(err)
       if (!isCancelled) {
         setError(err.message)
         setIsPending(false)

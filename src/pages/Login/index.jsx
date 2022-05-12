@@ -15,46 +15,67 @@ export default function Login() {
     login(email, password)
   }
 
+  const handleSubmitThird = e => {
+    e.preventDefault()
+  }
+
   return (
-    <form className="login auth_form" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <label>
-        <span>Email:</span>
-        <input
-          className="logs"
-          type="email"
-          required
-          onChange={e => setEmail(e.target.value)}
-          value={email}
-        />
-      </label>
-      <label>
-        <span>Password:</span>
-        <input
-          className="logs"
-          type="password"
-          required
-          onChange={e => setPassword(e.target.value)}
-          value={password}
-        />
-      </label>
+    <div className="container">
+      <form className="login auth_form" onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <label>
+          <span>Email:</span>
+          <input
+            className="logs"
+            type="email"
+            required
+            onChange={e => setEmail(e.target.value)}
+            value={email}
+          />
+        </label>
+        <label>
+          <span>Password:</span>
+          <input
+            className="logs"
+            type="password"
+            required
+            onChange={e => setPassword(e.target.value)}
+            value={password}
+          />
+        </label>
 
-      {isPending ? (
-        <button className="btn" disabled>
-          Loading...
-        </button>
-      ) : (
-        <button className="btn">Login</button>
-      )}
-      {error && <div className="error">{error}</div>}
+        {isPending ? (
+          <button className="login_buton" disabled>
+            Carregando...
+          </button>
+        ) : (
+          <button className="login_buton">Login</button>
+        )}
+        {error && <div className="error">{error}</div>}
 
-      <hr />
-      <button className="login_buton" onClick={loginWithGoogle}>
-        Continuar com Google
-      </button>
-      <button className="login_buton" onClick={loginWithGithub}>
-        Continuar com GitHub
-      </button>
-    </form>
+        <hr />
+      </form>
+      <form className="login__third__party" onSubmit={handleSubmitThird}>
+        {isPending ? (
+          <>
+            <button className="login_buton" disabled>
+              Carregando...
+            </button>
+            <button className="login_buton" disabled>
+              Carregando...
+            </button>
+          </>
+        ) : (
+          <>
+            <button className="login_buton" onClick={loginWithGoogle}>
+              Continuar com Google
+            </button>
+            <button className="login_buton" onClick={loginWithGithub}>
+              Continuar com GitHub
+            </button>
+          </>
+        )}
+      </form>
+    </div>
   )
 }
