@@ -5,9 +5,8 @@ import {
   GithubAuthProvider,
   updateProfile
 } from 'firebase/auth'
-import { uploadBytes, ref, getDownloadURL } from 'firebase/storage'
 import { useState, useEffect } from 'react'
-import { auth, storage, db } from '../Firebase/config'
+import { auth, db } from '../Firebase/config'
 import { useAuthContext } from './useAuthContext'
 import { doc, updateDoc, setDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
@@ -25,47 +24,35 @@ export const useLogin = () => {
     setIsPending(true)
 
     try {
-      // const res = await signInWithPopup(auth, new GoogleAuthProvider())
-
-      const provider = new GoogleAuthProvider()
-      provider.addScope('profile')
-      provider.addScope('email')
-      const result = await signInWithPopup(auth, provider)
+      const providerGoogle = new GoogleAuthProvider()
+      providerGoogle.addScope('profile')
+      providerGoogle.addScope('email')
+      const result = await signInWithPopup(auth, providerGoogle)
+      console.log('result: ', result)
 
       // The signed-in user info.
-      const user = result.user
+      const userGoogle = result.user
       // This gives you a Google Access Token.
-      const credential = GoogleAuthProvider.credentialFromResult(result)
+      const credentialGoogle = GoogleAuthProvider.credentialFromResult(result)
 
-      const token = credential.accessToken
+      const tokenGoogle = credentialGoogle.accessToken
+      console.log('credential: ', credentialGoogle)
 
       // create a user document
-      const myDocRef = doc(db, 'users', user.uid)
+      const myDocRef = doc(db, 'users', userGoogle.uid)
       await setDoc(myDocRef, {
         online: true,
-        displayName: user.displayName,
-        photoURL: user.photoURL
+        displayName: userGoogle.displayName,
+        photoURL: userGoogle.photoURL
       })
 
       // add display name to user
-      await updateProfile(user, {
-        displayName: user.displayName,
-        photoURL: user.photoURL
+      await updateProfile(userGoogle, {
+        displayName: userGoogle.displayName,
+        photoURL: userGoogle.photoURL
       })
 
-      // // The signed-in user info.
-      // const user = res.user
-      // // This gives you a Google Access Token.
-      // const credential = GoogleAuthProvider.credentialFromResult(res)
-      // const token = credential.accessToken
-
-      // // update online status on document
-      // const myDocRef = doc(db, 'users', user.uid)
-      // await updateDoc(myDocRef, {
-      //   online: true
-      // })
-      // dispatch login action
-      dispatch({ type: 'LOGIN', payload: user })
+      dispatch({ type: 'LOGIN', payload: userGoogle })
 
       if (!isCancelled) {
         setIsPending(false)
@@ -85,26 +72,33 @@ export const useLogin = () => {
     setIsPending(true)
 
     try {
-      const res = await signInWithPopup(auth, new GithubAuthProvider())
-      console.log('result: ', res)
+      const providerGithub = new GithubAuthProvider()
+      providerGithub.addScope('repo')
+      const result = await signInWithPopup(auth, providerGithub)
 
       // The signed-in user info.
-      const user = res.user
+      const userGithub = result.user
       // This gives you a Github Access Token.
-      const credential = GithubAuthProvider.credentialFromResult(res)
-      console.log('credential: ', credential)
+      const credentialGithub = GithubAuthProvider.credentialFromResult(result)
 
-      const token = credential.accessToken
-      console.log('token: ', token)
+      const tokenGithub = credentialGithub.accessToken
 
-      // update online status on document
-      const myDocRef = doc(db, 'users', user.uid)
-      await updateDoc(myDocRef, {
-        online: true
+      // create a user document
+      const myDocRef = doc(db, 'users', userGithub.uid)
+      await setDoc(myDocRef, {
+        online: true,
+        displayName: userGithub.displayName,
+        photoURL: userGithub.photoURL
+      })
+
+      // add display name to user
+      await updateProfile(userGithub, {
+        displayName: userGithub.displayName,
+        photoURL: userGithub.photoURL
       })
 
       // dispatch login action
-      dispatch({ type: 'LOGIN', payload: user })
+      dispatch({ type: 'LOGIN', payload: userGithub })
 
       if (!isCancelled) {
         setIsPending(false)

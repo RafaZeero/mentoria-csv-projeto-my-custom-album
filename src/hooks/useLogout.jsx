@@ -34,7 +34,7 @@ export const useLogout = () => {
         setIsPending(false)
         setError(null)
       }
-      await navigate('/')
+      navigate('/')
     } catch (err) {
       if (!isCancelled) {
         setError(err.message)
