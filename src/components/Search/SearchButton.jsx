@@ -1,5 +1,3 @@
-import './SearchButton.css'
-
 export function SearchButton({ buttonContent }) {
   const addToMyAlbum = () => {}
 

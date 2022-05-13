@@ -1,9 +1,6 @@
 import { SearchArea } from './Search/SearchArea'
 import { SearchButton } from './Search/SearchButton'
 
-//styles
-import './Search.css'
-
 export default function Search({
   sectionName,
   onSubmitFunction,

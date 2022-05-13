@@ -10,9 +10,6 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 
-//styles
-import './App.css'
-
 //components
 import Navbar from './components/Navbar'
 
@@ -20,7 +17,7 @@ function App() {
   const { user, authIsReady } = useAuthContext()
 
   return (
-    <div className="App">
+    <div className="min-w-full flex-col text-center items-center justify-center bg-[#d2e8de] text-[#000] min-h-screen font-[Roboto]">
       {authIsReady && (
         <BrowserRouter>
           <Navbar user={user} />

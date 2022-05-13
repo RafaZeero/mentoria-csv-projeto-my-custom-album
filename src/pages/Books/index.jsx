@@ -4,9 +4,6 @@ import { useState } from 'react'
 import Search from '../../components/Search'
 import BooksAPI from '../../api/books'
 
-//styles
-import './books.css'
-
 const books_api_url = 'https://www.googleapis.com/books/v1/volumes?key='
 
 export default function Books() {

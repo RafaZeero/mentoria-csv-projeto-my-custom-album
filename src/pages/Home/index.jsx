@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 export default function Home() {
   return (
     <>
-      <div className="homepage">
-        <h1>Album Personalizado</h1>
-        <div className="homepage_img animation_home">
+      <div className="flex flex-col gap-16 ">
+        <h1 className="text-5xl font-semibold">Album Personalizado</h1>
+        <div className="flex flex-col sm:flex-row ">
           <Link to="games">
             <img src="/assets/images/game-controller.svg" alt="Controller" />
           </Link>

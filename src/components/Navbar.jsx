@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
-import './Navbar.css'
 
 export default function Navbar({ user }) {
   const { logout, isPending } = useLogout()

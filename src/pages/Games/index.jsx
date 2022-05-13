@@ -3,8 +3,6 @@ import { useState } from 'react'
 //components
 import Search from '../../components/Search'
 
-//style
-import './games.css'
 import GamesAPI from '../../api/games'
 
 const games_list_url = 'https://api.rawg.io/api/games?key='
@@ -58,7 +56,7 @@ export default function Games() {
         error={error}
       />
 
-      <section className="content_list">
+      <section className="">
         {data &&
           data.map(game => (
             <div key={game.id}>

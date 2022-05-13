@@ -1,4 +1,4 @@
-import noImage from 'images/no-image.jpg'
+import noImage from '/assets/images/no-image.jpg'
 
 export default function APIResults({
   imageApi,

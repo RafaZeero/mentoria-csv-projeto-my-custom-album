@@ -1,5 +1,3 @@
-import './SearchArea.css'
-
 export function SearchArea({
   nameValue,
   searchParams,

@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import { useLogin } from '../../hooks/useLogin'
 
-//styles
-import './login.css'
-
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
