@@ -1,9 +1,11 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
-    family: {
-      Roboto: ['Roboto', 'sans-serif']
+    extend: {
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+        searchArea: ['Verdana', 'Geneva', 'Tahoma', 'sans-serif']
+      }
     },
     boxShadow: {
       customShadow:

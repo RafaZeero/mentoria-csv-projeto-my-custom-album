@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import ShowIf from '../../components/ShowIf'
 
 export default function Home() {
   return (
@@ -13,27 +12,27 @@ export default function Home() {
           o filme que você já assistiu e o livro que você já leu!
         </p>
         <p className="max-w-[290px] sm:container m-auto align-center text-center">
-          Faça agora sua coleção, chame seus amigos para vocês compararem as
-          coleções e não deixe nenhum item de fora.
+          Faça agora sua coleção, chame seus amigos e comparem suas coleções e
+          não deixe nenhum item de fora.
         </p>
         <div className="flex flex-row justify-center gap-4 sm:gap-6 lg:gap-7 p-4 ">
           <Link
             to="games"
-            className="border-2 border-black rounded-xl shadow-customShadow hover:scale-[1.03] duration-200 p-2 w-16"
+            className="border-2 border-black rounded-xl shadow-customShadow hover:scale-[1.03] duration-200 p-2 w-16 md:w-20"
           >
             <img src="/assets/images/game-controller.svg" alt="Controller" />
           </Link>
 
           <Link
             to="movies"
-            className="border-2 border-black rounded-xl shadow-customShadow hover:scale-[1.03] duration-200 p-2 w-16"
+            className="border-2 border-black rounded-xl shadow-customShadow hover:scale-[1.03] duration-200 p-2 w-16 md:w-20"
           >
             <img src="/assets/images/movie-camera.svg" alt="Camera" />
           </Link>
 
           <Link
             to="books"
-            className="border-2 border-black rounded-xl shadow-customShadow hover:scale-[1.03] duration-200 p-2 w-16"
+            className="border-2 border-black rounded-xl shadow-customShadow hover:scale-[1.03] duration-200 p-2 w-16 md:w-20"
           >
             <img src="/assets/images/books.svg" alt="Books" />
           </Link>

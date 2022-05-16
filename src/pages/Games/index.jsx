@@ -27,7 +27,7 @@ export default function Games() {
 
     if (!slug.length || slug.length < 3) {
       setSearchWord('')
-      return setError('Busque com no mínimo 3 caracteres')
+      return setError('Pesquise com no mínimo 3 caracteres')
     }
 
     fetch(
@@ -51,7 +51,7 @@ export default function Games() {
         searchParams={searchParams}
         searchFunction={handleSearch}
         placeholderValue={'Jogo'}
-        buttonContent={'Pesquisar jogo'}
+        buttonContent={'Pesquisar'}
         searchWord={searchWord}
         error={error}
       />

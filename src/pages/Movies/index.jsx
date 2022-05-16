@@ -25,7 +25,7 @@ export default function Movies() {
 
     if (!slug.length || slug.length < 3) {
       setSearchWord('')
-      return setError('Busque com no mínimo 3 caracteres')
+      return setError('Pesquise com no mínimo 3 caracteres')
     }
 
     fetch(
@@ -51,7 +51,7 @@ export default function Movies() {
         searchParams={searchParams}
         searchFunction={handleSearch}
         placeholderValue={'Filme'}
-        buttonContent={'Pesquisar filme'}
+        buttonContent={'Pesquisar'}
         searchWord={searchWord}
         error={error}
       />

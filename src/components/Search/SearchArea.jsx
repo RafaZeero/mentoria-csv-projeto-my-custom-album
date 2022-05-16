@@ -7,7 +7,7 @@ export function SearchArea({
   return (
     <>
       <input
-        className="search_input"
+        className="rounded-md px-2 mr-2 placeholder:italic bg-emerald-200"
         type="text"
         name={nameValue}
         value={searchParams}

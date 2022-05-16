@@ -17,7 +17,7 @@ function App() {
   const { user, authIsReady } = useAuthContext()
 
   return (
-    <div className="min-w-full flex-col text-center items-center justify-center bg-[#e5fff3] text-[#000] min-h-screen font-[Roboto]">
+    <div className="min-w-full flex-col text-center items-center justify-center bg-[#e5fff3] text-[#000] min-h-screen font-roboto">
       {authIsReady && (
         <BrowserRouter>
           <Navbar user={user} />

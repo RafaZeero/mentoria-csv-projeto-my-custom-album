@@ -14,9 +14,12 @@ export default function Search({
 }) {
   return (
     <>
-      <form onSubmit={onSubmitFunction} className="form_search">
-        <h1>{sectionName}</h1>
-        <div className="search_area">
+      <form
+        onSubmit={onSubmitFunction}
+        className="flex flex-col justify-center"
+      >
+        <h1 className="text-xl font-semibold m-3">{sectionName}</h1>
+        <div className="flex justify-center">
           <SearchArea
             nameValue={nameValue}
             searchParams={searchParams}
@@ -28,10 +31,12 @@ export default function Search({
       </form>
 
       {searchWord && (
-        <p className="search_word">Resultados para '{searchWord}'</p>
+        <p className="text-gray-800 font-searchArea mt-4">
+          Resultados para '{searchWord}'
+        </p>
       )}
 
-      {error && <p>{error}</p>}
+      {error && <p className="text-red-700 mt-3">{error}</p>}
     </>
   )
 }

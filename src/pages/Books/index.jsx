@@ -26,7 +26,7 @@ export default function Books() {
 
     if (!slug.length || slug.length < 3) {
       setSearchWord('')
-      return setError('Busque com no mínimo 3 caracteres')
+      return setError('Pesquise com no mínimo 3 caracteres')
     }
 
     fetch(books_api_url + import.meta.env.VITE_BOOKS_API_KEY + `&q=${slug}`)
@@ -48,7 +48,7 @@ export default function Books() {
         searchParams={searchParams}
         searchFunction={handleSearch}
         placeholderValue={'Livro'}
-        buttonContent={'Pesquisar livro'}
+        buttonContent={'Pesquisar'}
         searchWord={searchWord}
         error={error}
       />
