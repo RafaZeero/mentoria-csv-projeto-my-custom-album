@@ -1,3 +1,4 @@
+import { SearchButton } from '../components/Search/SearchButton'
 import noImage from '/assets/images/no-image.jpg'
 
 export default function GamesAPI({
@@ -18,14 +19,15 @@ export default function GamesAPI({
   // console.log(platformskeys)
   return (
     <>
-      <div className="card">
+      <div className="flex flex-col max-w-[93vw] w-full flex-wrap bg-white rounded-lg shadow-customShadow justify-center align-center p-4 gap-2">
         {/* Imagem do item */}
+
         <img
           src={imageApi ? imageApi : noImage}
           alt={altImage}
-          className="card_img"
+          className="flex-auto m-auto z-10 inset-0 w-full h-40 object-cover rounded-lg"
         />
-        <div className="card_info">
+        <div className="flex-auto gap-5 leading-6">
           {/* Título do item */}
           <h2>{resultTitle}</h2>
           {/* Conteúdo iterável */}
@@ -34,21 +36,19 @@ export default function GamesAPI({
             {firstTopicContent.length > 0
               ? firstTopicContent.map(topic => (
                   <span key={topic.id ? topic.id : topic}>
-                    {topic.name ? topic.name : topic} -{' '}
+                    {' '}
+                    {topic.name ? topic.name : topic} -
                   </span>
                 ))
               : firstTopicContentNotFound}
           </span>
           {/* Conteúdo não iterável */}
           <p>
-            {/* {secondTopicContent !== undefined
-              ? secondTopicTitle + secondTopicContent[0].platform.name
-              : secondTopicContentNotFound} */}
             {secondTopicContent !== undefined
               ? secondTopicTitle +
                 Object.values(secondTopicContent).map(test =>
                   Object.values(test).map(gameName => {
-                    return gameName.name + ' '
+                    return ' ' + gameName.name
                   })
                 )
               : secondTopicContentNotFound}
@@ -60,7 +60,7 @@ export default function GamesAPI({
                 thirdTopicContent.split('-').reverse().join('/')
               : thirdTopicContentNotFound}
           </p>
-          <button className="btn">Adicionar a lista</button>
+          <SearchButton buttonContent={'Adicionar a lista'} />
         </div>
       </div>
     </>

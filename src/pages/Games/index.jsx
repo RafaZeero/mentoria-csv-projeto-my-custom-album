@@ -56,7 +56,7 @@ export default function Games() {
         error={error}
       />
 
-      <section className="">
+      <section className="grid gap-6 w-full align-center justify-center mt-5">
         {data &&
           data.map(game => (
             <div key={game.id}>
